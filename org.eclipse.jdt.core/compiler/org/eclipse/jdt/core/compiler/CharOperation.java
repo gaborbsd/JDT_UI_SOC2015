@@ -3601,6 +3601,23 @@ public static final char[][] subarray(char[][] array, int start, int end) {
 }
 
 /**
+ * @since 3.11
+ */
+public static final boolean substringMatch(char[] pattern, char[] name) {
+
+	outer: for (int oidx = 0; oidx < name.length; oidx++) {
+		for (int iidx = 0; iidx < pattern.length; iidx++) {
+			if (Character.toLowerCase(name[oidx]) != Character.toLowerCase(pattern[iidx]))
+				continue outer;
+			if (iidx == pattern.length - 1)
+				return true;
+		}
+	}
+
+	return false;
+}
+
+/**
  * Answers a new array which is a copy of the given array starting at the given start and
  * ending at the given end. The given start is inclusive and the given end is exclusive.
  * Answers null if start is greater than end, if start is lower than 0 or if end is greater
