@@ -168,4 +168,17 @@ public void test012() {
 			4,
 			true));
 }
+
+// substring match: https://bugs.eclipse.org/bugs/show_bug.cgi?id=350000
+public void test013() {
+	assertTrue("Should match", CharOperation.substringMatch(
+			new char[] { 'a', 'b', 'c' },
+			new char[] { 'z', 'a', 'b', 'c' }));
+	assertTrue("Should match", CharOperation.substringMatch(
+			new char[] { 'a', 'b', 'c' },
+			new char[] { 'z', 'A', 'b', 'c' }));
+	assertFalse("Should not match", CharOperation.substringMatch(
+			new char[] { 'a', 'b', 'c' },
+			new char[] { 'z', 'a', 'b', 'd', 'c' }));
+}
 }
